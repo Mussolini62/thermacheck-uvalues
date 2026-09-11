@@ -1,0 +1,677 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>U-Value Calculations UK | Fast, Independent, Chartered Surveyor | ThermaCheck</title>
+<meta name="description" content="Independent U-value calculations for Building Control and Building Regulations submissions, from a RICS Chartered Building Surveyor. Fixed fee, UK-wide, no site visit needed.">
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        line-height: 1.6;
+        color: #333;
+    }
+
+    .container {
+        max-width: 1100px;
+        margin: 0 auto;
+        padding: 0 20px;
+    }
+
+    a { color: inherit; }
+
+    /* Header */
+    header {
+        background: #e67e22;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+    }
+
+    nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1rem 0;
+        flex-wrap: wrap;
+        gap: 1rem;
+    }
+
+    .brand {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        text-decoration: none;
+        color: white;
+        font-weight: 700;
+        font-size: 1.1rem;
+    }
+
+    .brand img {
+        height: 34px;
+        width: auto;
+        background: white;
+        border-radius: 4px;
+        padding: 3px 6px;
+    }
+
+    .nav-links {
+        display: flex;
+        list-style: none;
+        gap: 1.75rem;
+        align-items: center;
+        flex-wrap: wrap;
+    }
+
+    .nav-links a {
+        text-decoration: none;
+        color: white;
+        font-weight: 600;
+        font-size: 0.95rem;
+        transition: color 0.3s;
+    }
+
+    .nav-links a:hover {
+        color: #2c3e50;
+    }
+
+    /* Hero */
+    .hero {
+        background: linear-gradient(135deg, #2c3e50 0%, #3498db 100%);
+        color: white;
+        padding: 3.5rem 0;
+    }
+
+    .hero-content {
+        display: grid;
+        grid-template-columns: 1.3fr 1fr;
+        gap: 3rem;
+        align-items: center;
+    }
+
+    .hero-text .eyebrow {
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        font-size: 0.85rem;
+        font-weight: 700;
+        color: #f5b98a;
+        margin-bottom: 0.75rem;
+    }
+
+    .hero-text h1 {
+        font-size: 2.4rem;
+        margin-bottom: 1rem;
+        line-height: 1.25;
+    }
+
+    .hero-text p {
+        font-size: 1.05rem;
+        margin-bottom: 1.75rem;
+        color: #e8eef4;
+    }
+
+    .hero-logo {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .hero-logo img {
+        max-width: 240px;
+        height: auto;
+        background: white;
+        padding: 18px;
+        border-radius: 12px;
+        box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+    }
+
+    .hero-buttons {
+        display: flex;
+        gap: 1rem;
+        flex-wrap: wrap;
+    }
+
+    .btn-primary {
+        background: #e67e22;
+        color: white;
+        padding: 1rem 2rem;
+        border-radius: 5px;
+        text-decoration: none;
+        font-weight: 600;
+        transition: background 0.3s;
+        border: 2px solid #e67e22;
+        display: inline-block;
+    }
+
+    .btn-primary:hover {
+        background: #d35400;
+        border-color: #d35400;
+    }
+
+    .btn-secondary {
+        background: transparent;
+        color: white;
+        padding: 1rem 2rem;
+        border-radius: 5px;
+        text-decoration: none;
+        font-weight: 600;
+        border: 2px solid white;
+        transition: all 0.3s;
+        display: inline-block;
+    }
+
+    .btn-secondary:hover {
+        background: white;
+        color: #2c3e50;
+    }
+
+    /* Credentials strip */
+    .credentials {
+        background: white;
+        padding: 1.25rem 0;
+        text-align: center;
+        border-bottom: 1px solid #eee;
+    }
+
+    .credentials p {
+        font-weight: 600;
+        color: #2c3e50;
+        letter-spacing: 0.02em;
+    }
+
+    /* Section basics */
+    section {
+        padding: 3.5rem 0;
+    }
+
+    .section-title {
+        text-align: center;
+        font-size: 1.9rem;
+        margin-bottom: 0.75rem;
+        color: #2c3e50;
+    }
+
+    .section-subtitle {
+        text-align: center;
+        max-width: 720px;
+        margin: 0 auto 2.5rem;
+        color: #555;
+    }
+
+    .alt-bg {
+        background: #f8f9fa;
+    }
+
+    /* Why independent */
+    .compare-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+        gap: 2rem;
+    }
+
+    .compare-card {
+        background: white;
+        padding: 2rem;
+        border-radius: 8px;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+    }
+
+    .compare-card h3 {
+        color: #e67e22;
+        margin-bottom: 0.75rem;
+        font-size: 1.15rem;
+    }
+
+    /* How it works */
+    .steps {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 2rem;
+    }
+
+    .step {
+        text-align: center;
+    }
+
+    .step-number {
+        width: 48px;
+        height: 48px;
+        border-radius: 50%;
+        background: #2c3e50;
+        color: white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 700;
+        font-size: 1.2rem;
+        margin: 0 auto 1rem;
+    }
+
+    .step h3 {
+        color: #2c3e50;
+        margin-bottom: 0.5rem;
+        font-size: 1.05rem;
+    }
+
+    .step p {
+        color: #555;
+        font-size: 0.95rem;
+    }
+
+    /* Who it's for */
+    .audience-list {
+        list-style: none;
+        max-width: 760px;
+        margin: 0 auto;
+    }
+
+    .audience-list li {
+        padding: 0.6rem 0 0.6rem 1.75rem;
+        position: relative;
+        color: #333;
+    }
+
+    .audience-list li:before {
+        content: "\2713";
+        position: absolute;
+        left: 0;
+        color: #e67e22;
+        font-weight: bold;
+    }
+
+    /* Pricing */
+    .price-box {
+        max-width: 560px;
+        margin: 0 auto;
+        background: white;
+        border-radius: 10px;
+        box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+        overflow: hidden;
+        text-align: center;
+    }
+
+    .price-box .price-head {
+        background: #2c3e50;
+        color: white;
+        padding: 1.75rem;
+    }
+
+    .price-box .price-head .amount {
+        font-size: 2.6rem;
+        font-weight: 700;
+    }
+
+    .price-box .price-head .unit {
+        font-size: 1rem;
+        color: #cfd8e3;
+    }
+
+    .price-box .price-body {
+        padding: 1.75rem;
+    }
+
+    .price-box .price-body ul {
+        list-style: none;
+        text-align: left;
+        margin-bottom: 1.5rem;
+    }
+
+    .price-box .price-body li {
+        padding: 0.45rem 0 0.45rem 1.75rem;
+        position: relative;
+        color: #333;
+    }
+
+    .price-box .price-body li:before {
+        content: "\2713";
+        position: absolute;
+        left: 0;
+        color: #e67e22;
+        font-weight: bold;
+    }
+
+    .price-note {
+        text-align: center;
+        max-width: 700px;
+        margin: 1.5rem auto 0;
+        color: #666;
+        font-style: italic;
+        font-size: 0.95rem;
+    }
+
+    /* FAQ */
+    .faq-item {
+        max-width: 800px;
+        margin: 0 auto 1.25rem;
+        background: white;
+        border-radius: 8px;
+        padding: 1.5rem 1.75rem;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+    }
+
+    .faq-item h3 {
+        color: #2c3e50;
+        margin-bottom: 0.5rem;
+        font-size: 1.05rem;
+    }
+
+    .faq-item p {
+        color: #555;
+        font-size: 0.97rem;
+    }
+
+    /* Quote / contact */
+    .quote-section {
+        background: linear-gradient(135deg, #e67e22 0%, #d35400 100%);
+        color: white;
+        text-align: center;
+    }
+
+    .quote-section h2 {
+        font-size: 2rem;
+        margin-bottom: 1rem;
+    }
+
+    .quote-section p {
+        max-width: 640px;
+        margin: 0 auto 1.5rem;
+        font-size: 1.05rem;
+    }
+
+    .contact-card {
+        background: white;
+        color: #333;
+        max-width: 520px;
+        margin: 2rem auto 0;
+        border-radius: 8px;
+        padding: 2rem;
+        text-align: left;
+    }
+
+    .contact-card p {
+        color: #333;
+        margin: 0 0 0.6rem;
+        font-size: 1rem;
+    }
+
+    .contact-card a.email-link {
+        font-weight: 700;
+        color: #e67e22;
+        text-decoration: none;
+    }
+
+    .contact-card .submit-button {
+        display: inline-block;
+        margin-top: 1rem;
+        background: #e67e22;
+        color: white;
+        padding: 0.9rem 1.75rem;
+        border-radius: 5px;
+        text-decoration: none;
+        font-weight: 600;
+        transition: background 0.3s;
+    }
+
+    .contact-card .submit-button:hover {
+        background: #d35400;
+    }
+
+    /* Footer */
+    footer {
+        background: #2c3e50;
+        color: white;
+        padding: 2rem 0;
+        text-align: center;
+        font-size: 0.9rem;
+    }
+
+    footer a {
+        color: #f5b98a;
+        text-decoration: none;
+        font-weight: 600;
+    }
+
+    footer a:hover {
+        text-decoration: underline;
+    }
+
+    html {
+        scroll-padding-top: 90px;
+    }
+
+    @media (max-width: 768px) {
+        .nav-links {
+            display: none;
+        }
+
+        .hero-content {
+            grid-template-columns: 1fr;
+            text-align: center;
+        }
+
+        .hero-text h1 {
+            font-size: 1.7rem;
+        }
+
+        .hero-logo {
+            order: -1;
+        }
+
+        .hero-logo img {
+            max-width: 180px;
+        }
+
+        .hero-buttons {
+            justify-content: center;
+        }
+    }
+</style>
+</head>
+<body>
+
+<header>
+    <nav class="container">
+        <a href="#home" class="brand">
+            <img src="data:image/jpeg;base64,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" alt="ThermaCheck Ltd">
+            ThermaCheck U-Values
+        </a>
+        <ul class="nav-links">
+            <li><a href="#how-it-works">How It Works</a></li>
+            <li><a href="#why-us">Why Us</a></li>
+            <li><a href="#pricing">Pricing</a></li>
+            <li><a href="#faq">FAQ</a></li>
+            <li><a href="#quote">Get a Quote</a></li>
+        </ul>
+    </nav>
+</header>
+
+<section id="home" class="hero">
+    <div class="container">
+        <div class="hero-content">
+            <div class="hero-text">
+                <div class="eyebrow">Independent U-Value Calculations</div>
+                <h1>U-Value Calculations for Building Control &amp; Building Regulations, Done Properly</h1>
+                <p>Fast, independent U-value calculations for extensions, loft conversions, new builds and refurbishments &mdash; prepared by a RICS Chartered Building Surveyor with 45 years of Building Control and Building Standards experience. Desktop service, UK-wide, no site visit required.</p>
+                <div class="hero-buttons">
+                    <a href="#quote" class="btn-primary">Request a Calculation</a>
+                    <a href="#how-it-works" class="btn-secondary">How It Works</a>
+                </div>
+            </div>
+            <div class="hero-logo">
+                <img src="data:image/jpeg;base64,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" alt="ThermaCheck Ltd">
+            </div>
+        </div>
+    </div>
+</section>
+
+<div class="credentials">
+    <div class="container">
+        <p>RICS Chartered Building Surveyor &nbsp;|&nbsp; Elmhurst Energy Accredited Assessor &nbsp;|&nbsp; 45 Years' Building Standards Experience</p>
+    </div>
+</div>
+
+<section id="why-us" class="alt-bg">
+    <div class="container">
+        <h2 class="section-title">Why Not Just Use a Free Calculator?</h2>
+        <p class="section-subtitle">Many insulation manufacturers offer free U-value calculations. They're a reasonable starting point, but they come with limits worth knowing about before you submit anything to Building Control.</p>
+        <div class="compare-grid">
+            <div class="compare-card">
+                <h3>Independent, Not Product-Led</h3>
+                <p>A manufacturer's calculator is built to specify that manufacturer's product. Our calculations are independent and product-neutral &mdash; we tell you what the build-up actually achieves, not what sells the most insulation.</p>
+            </div>
+            <div class="compare-card">
+                <h3>Condensation Risk Checked</h3>
+                <p>A U-value on its own doesn't tell you whether a build-up is at risk of interstitial condensation. We check this as standard, which free product-selection tools typically don't.</p>
+            </div>
+            <div class="compare-card">
+                <h3>Guidance When It Doesn't Add Up</h3>
+                <p>If a build-up falls short of target, you get an explanation of why and what would close the gap &mdash; not just a number and a dead end.</p>
+            </div>
+            <div class="compare-card">
+                <h3>Backed by Regulatory Experience</h3>
+                <p>Prepared by a Chartered Building Surveyor with 45 years in Building Control and Building Standards, so the output is written with Building Control submission in mind from the start.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="how-it-works">
+    <div class="container">
+        <h2 class="section-title">How It Works</h2>
+        <p class="section-subtitle">A straightforward desktop process. No site visit, no back-and-forth if you send everything up front.</p>
+        <div class="steps">
+            <div class="step">
+                <div class="step-number">1</div>
+                <h3>Send Your Build-Up</h3>
+                <p>Email the construction details for each element &mdash; wall, roof or floor &mdash; including layer thicknesses and materials, plus any drawings you have.</p>
+            </div>
+            <div class="step">
+                <div class="step-number">2</div>
+                <h3>We Calculate</h3>
+                <p>Each element is calculated to BS EN ISO 6946 / BR 443 methodology, with a condensation risk check included as standard.</p>
+            </div>
+            <div class="step">
+                <div class="step-number">3</div>
+                <h3>You Receive a Report</h3>
+                <p>A clear, written calculation for each element, suitable to submit to Building Control or pass on to your architect or contractor.</p>
+            </div>
+            <div class="step">
+                <div class="step-number">4</div>
+                <h3>Advice If Needed</h3>
+                <p>If a build-up doesn't meet target, we'll explain what would need to change &mdash; with further advisory support available if you want it.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="alt-bg">
+    <div class="container">
+        <h2 class="section-title">Who This Is For</h2>
+        <ul class="audience-list">
+            <li>Homeowners and self-builders planning an extension, loft conversion or conservatory who need a U-value calculation for their Building Warrant or Building Regulations application</li>
+            <li>Architects and designers who need independent calculations to support drawings, without the wait or bias of a manufacturer's specification service</li>
+            <li>Builders and contractors who need a quick, reliable calculation to confirm a proposed build-up before ordering materials</li>
+            <li>Developers with repeat house types across multiple plots, where the same element can be calculated once and reused</li>
+            <li>Anyone who has an insulation manufacturer's calculation already and wants an independent second opinion</li>
+        </ul>
+    </div>
+</section>
+
+<section id="pricing">
+    <div class="container">
+        <h2 class="section-title">Pricing</h2>
+        <p class="section-subtitle">One simple, fixed fee. No hidden extras.</p>
+        <div class="price-box">
+            <div class="price-head">
+                <div class="amount">&pound;50</div>
+                <div class="unit">per element</div>
+            </div>
+            <div class="price-body">
+                <ul>
+                    <li>Calculation to BS EN ISO 6946 / BR 443</li>
+                    <li>Interstitial condensation risk check included</li>
+                    <li>Written report suitable for Building Control</li>
+                    <li>Follow-up advice if the build-up needs adjusting</li>
+                </ul>
+                <a href="#quote" class="btn-primary">Get Started</a>
+            </div>
+        </div>
+        <p class="price-note">An "element" is a distinct wall, roof or floor build-up &mdash; a typical extension with one wall type, one roof type and one floor type is usually three elements. Discounts are available for developments with repeated house types. Get in touch for an exact quote.</p>
+    </div>
+</section>
+
+<section id="faq" class="alt-bg">
+    <div class="container">
+        <h2 class="section-title">Frequently Asked Questions</h2>
+        <div class="faq-item">
+            <h3>What exactly counts as "an element"?</h3>
+            <p>An element is one distinct type of external wall, roof or floor construction. If your extension has a single wall build-up, a single roof build-up and a single floor build-up, that's three elements. A more complex design with, say, two different wall constructions would be four.</p>
+        </div>
+        <div class="faq-item">
+            <h3>Do you need to visit the property?</h3>
+            <p>No. This is a desktop calculation based on the construction details and drawings you provide, so it can be carried out anywhere in the UK without a site visit.</p>
+        </div>
+        <div class="faq-item">
+            <h3>Can I use this for my Building Control / Building Warrant submission?</h3>
+            <p>Yes. The calculation is prepared with submission in mind, and is backed by RICS chartered status and Building Control experience.</p>
+        </div>
+        <div class="faq-item">
+            <h3>What information do you need from me?</h3>
+            <p>For each element: the layers of the construction in order, their thicknesses, and the materials or products used (including insulation type and thickness). Drawings help but aren't essential if you can describe the build-up clearly.</p>
+        </div>
+        <div class="faq-item">
+            <h3>What if my build-up doesn't meet the target U-value?</h3>
+            <p>We'll tell you clearly, and explain what change would close the gap &mdash; for example, additional insulation thickness or a different product. Further advice beyond that is available through our Building Regulations advisory service.</p>
+        </div>
+        <div class="faq-item">
+            <h3>Do you cover Scotland, England, Wales and Northern Ireland?</h3>
+            <p>Yes, UK-wide. The underlying calculation method is the same across the UK; target values differ by nation and by the applicable edition of the regulations, which we account for based on where the property is.</p>
+        </div>
+        <div class="faq-item">
+            <h3>I need a full SAP assessment or EPC, not just a U-value &mdash; can you help?</h3>
+            <p>Yes &mdash; U-value calculations are one part of what ThermaCheck Ltd offers. Visit our <a href="https://www.thermacheck.co.uk" style="color:#e67e22; font-weight:600;">main site</a> for SAP assessments, EPCs, Planning Energy Statements and Building Standards consultancy.</p>
+        </div>
+    </div>
+</section>
+
+<section id="quote" class="quote-section">
+    <div class="container">
+        <h2>Request a U-Value Calculation</h2>
+        <p>Email your construction details and drawings and we'll come back to you with a fixed-price quote and likely turnaround.</p>
+        <div class="contact-card">
+            <p><strong>Email:</strong> <a class="email-link" href="mailto:info@thermacheck.co.uk?subject=U-Value%20Calculation%20Enquiry&body=Property%20address%2Fpostcode%3A%0AElements%20needing%20a%20U-value%20(e.g.%20wall%2C%20roof%2C%20floor)%3A%0ABrief%20description%20of%20construction%3A%0ATimescale%3A%0A">info@thermacheck.co.uk</a></p>
+            <p style="color:#666; font-size:0.9rem; margin-top:1rem;">The email link opens a pre-filled message so you can just add your details &mdash; property address, which elements you need calculated, a brief description of the construction, and your timescale.</p>
+            <a class="submit-button" href="mailto:info@thermacheck.co.uk?subject=U-Value%20Calculation%20Enquiry">Email Us Now</a>
+        </div>
+    </div>
+</section>
+
+<footer>
+    <div class="container">
+        <p>&copy; 2026 ThermaCheck Ltd. All rights reserved.</p>
+        <p>Registered in Scotland | RICS Chartered Building Surveyor | Elmhurst Energy Accredited</p>
+        <p style="margin-top: 0.5rem;">U-value calculations are one of our services &mdash; see <a href="https://www.thermacheck.co.uk">thermacheck.co.uk</a> for SAP, EPC and Building Standards consultancy.</p>
+    </div>
+</footer>
+
+<script>
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        });
+    });
+</script>
+
+</body>
+</html>
